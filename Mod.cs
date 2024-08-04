@@ -9,7 +9,7 @@ namespace TradingCostTweaker
     public class Mod : IMod
     {
         public static string Name = "Trading Cost Tweaker";
-        public static string Version = "1.0";
+        public static string Version = "1.1";
         public static string Author = "StarQ";
 
         public static ILog log = LogManager.GetLogger($"{nameof(TradingCostTweaker)}").SetShowsErrorsInUI(false);
@@ -28,7 +28,9 @@ namespace TradingCostTweaker
 
             AssetDatabase.global.LoadSettings(nameof(TradingCostTweaker), m_Setting, new Setting(this));
 
-            updateSystem.UpdateAfter<OutsideTradeSystem>(SystemUpdatePhase.GameSimulation);
+            updateSystem.UpdateAt<OutsideTradeSystem>(SystemUpdatePhase.GameSimulation);
+            updateSystem.UpdateBefore<UIUpdate>(SystemUpdatePhase.UIUpdate);
+            //updateSystem.UpdateAt<Brand>(SystemUpdatePhase.MainLoop);
         }
 
         public void OnDispose()

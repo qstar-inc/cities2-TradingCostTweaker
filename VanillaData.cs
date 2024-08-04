@@ -14,6 +14,14 @@
         public int HearseFee { get; }
         public int FireEngineFee { get; }
         public int PoliceFee { get; }
+        public float RoadDistanceMultiplier { get; }
+        public float RoadWeightMultiplier { get; }
+        public float AirDistanceMultiplier { get; }
+        public float AirWeightMultiplier { get; }
+        public float ShipDistanceMultiplier { get; }
+        public float ShipWeightMultiplier { get; }
+        public float TrainDistanceMultiplier { get; }
+        public float TrainWeightMultiplier { get; }
 
         public VanillaData()
         {
@@ -29,6 +37,14 @@
             HearseFee = 25;
             FireEngineFee = 50;
             PoliceFee = 50;
+            RoadDistanceMultiplier = 0.04f;
+            RoadWeightMultiplier = 0.02f;
+            AirDistanceMultiplier = 0.001f;
+            AirWeightMultiplier = 0.05f;
+            ShipDistanceMultiplier = 0.001f;
+            ShipWeightMultiplier = 0.005f;
+            TrainDistanceMultiplier = 0.01f;
+            TrainWeightMultiplier = 0.005f;
         }
     }
 }

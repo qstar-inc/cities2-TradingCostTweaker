@@ -11,6 +11,7 @@
 # Trading Cost Tweaker
 Do you feel your electricity is more expensive? Do you want to charge more for your electricity?
 Or is it that you think you should not be paying so much for the fire truck from your neighboring cities?
+Or do you want to rise the cost of importing cargo through trucks so high that companies are forced to find the cargo inside your city?
 
 You've came to the right place. Introducing Trading Cost Tweaker that allows you to tweak various outside service/cargo trade parameters.
 
@@ -27,17 +28,16 @@ Each service can be individually configured from the Options UI.
 	<!--Link to the forum post where the mod can be discussed-->
 	<ForumLink Value="" />
 	<!--Version of the mod-->
-	<ModVersion Value="1.0" />
+	<ModVersion Value="1.1" />
 	<!--Recommended version of the base game to use the mod-->
 	<GameVersion Value="1.1.*" />
 	<!--Dependency for the mod, can be set multiple times-->
 	<Dependency Id="" />
 	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
-	<ChangeLog Value="1.0" />
+	<ChangeLog Value="1.1" />
 	<ChangeLog>
-## Initial Release
-* Option to modify the export fees for electricity, water, sewage.
-* Option to modify the import fees for electricity, water and city services.
+## New Features
+* Option to modify the cargo costs for all four cargo transportation method.
 	</ChangeLog>
 	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab-->
 	<ExternalLink Type="github" Url="https://github.com/qstar-inc/cities2-TradingCostTweaker" />

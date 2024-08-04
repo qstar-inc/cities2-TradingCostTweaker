@@ -13,10 +13,7 @@ namespace TradingCostTweaker
     {
         private PrefabSystem prefabSystem;
         private EntityQuery prefabQuery;
-        private EntityQuery populationQuery;
-        //public int populationValue = 0;
-        //public bool IsGameMode = false;
-        private readonly Setting settings = Mod.m_Setting;
+        private Setting settings = Mod.m_Setting;
         private readonly VanillaData VanillaData = new();
 
         protected override void OnCreate()
@@ -31,23 +28,8 @@ namespace TradingCostTweaker
                     ComponentType.ReadWrite<OutsideTradeParameterData>()
                     ],
             });
-            populationQuery = GetEntityQuery(new EntityQueryDesc()
-            {
-                All = [
-                    ComponentType.ReadOnly<Population>()
-                    ]
-            });
             RequireForUpdate(prefabQuery);
-            RequireForUpdate(populationQuery);
 
-        }
-
-        protected override void OnGameLoadingComplete(Purpose purpose, GameMode mode)
-        {
-            base.OnGameLoadingComplete(purpose, mode);
-
-            //IsGameMode = GameModeExtensions.IsGame(mode);
-            //Mod.log.Info(mode);
         }
 
         protected override void OnUpdate()
@@ -79,24 +61,17 @@ namespace TradingCostTweaker
                             data.m_FireEngineImportServiceFee = (int)(settings.FireEngineFee / 100d * VanillaData.FireEngineFee);
                             data.m_PoliceImportServiceFee = (int)(settings.PoliceFee / 100d * VanillaData.PoliceFee);
 
+                            data.m_RoadDistanceMultiplier = (int)(settings.RoadDistanceMultiplier / 100d * VanillaData.RoadDistanceMultiplier);
+                            data.m_RoadWeightMultiplier = (int)(settings.RoadWeightMultiplier / 100d * VanillaData.RoadWeightMultiplier);
+                            data.m_AirDistanceMultiplier = (int)(settings.AirDistanceMultiplier / 100d * VanillaData.AirDistanceMultiplier);
+                            data.m_AirWeightMultiplier = (int)(settings.AirWeightMultiplier / 100d * VanillaData.AirWeightMultiplier);
+                            data.m_ShipDistanceMultiplier = (int)(settings.ShipDistanceMultiplier / 100d * VanillaData.ShipDistanceMultiplier);
+                            data.m_ShipWeightMultiplier = (int)(settings.ShipWeightMultiplier / 100d * VanillaData.ShipWeightMultiplier);
+                            data.m_TrainDistanceMultiplier = (int)(settings.TrainDistanceMultiplier / 100d * VanillaData.TrainDistanceMultiplier);
+                            data.m_TrainWeightMultiplier = (int)(settings.TrainWeightMultiplier / 100d * VanillaData.TrainWeightMultiplier);
+
                             EntityManager.SetComponentData(entity, data);
                         }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Mod.log.Error(e);
-            }
-
-            try
-            {
-                var entities = populationQuery.ToEntityArray(Allocator.Temp);
-                foreach (Entity entity in entities)
-                {
-                    if (EntityManager.TryGetComponent(entity, out Population data))
-                    {
-                        //populationValue = data.m_Population;
                     }
                 }
             }
