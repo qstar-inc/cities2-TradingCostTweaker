@@ -1,48 +1,49 @@
 ﻿// Ignore Spelling: Preload
 
+using System;
 using Colossal.Entities;
 using Colossal.Serialization.Entities;
-using Game.City;
 using Game;
-using System;
+using Game.City;
+using Game.Prefabs;
 using Unity.Collections;
 using Unity.Entities;
 
-namespace TradingCostTweaker
+namespace TradingCostTweaker.Systems
 {
     public partial class UIUpdate : GameSystemBase
     {
         private EntityQuery populationQuery;
         public double PopulationValue = 0;
-        private Setting settings = Mod.m_Setting;
+        private readonly Setting settings = Mod.m_Setting;
 
         protected override void OnCreate()
         {
             base.OnCreate();
 
-            populationQuery = GetEntityQuery(new EntityQueryDesc()
-            {
-                All = [
-                    ComponentType.ReadOnly<Population>()
-                    ]
-            });
+            populationQuery = SystemAPI.QueryBuilder().WithAll<Population>().Build();
             RequireForUpdate(populationQuery);
-
         }
 
         protected override void OnGamePreload(Purpose purpose, GameMode mode)
         {
             base.OnGamePreload(purpose, mode);
 
-            if ($"{mode}" == "Game")
+            if (mode == GameMode.Game)
             {
                 settings.NotGameMode = false;
                 Enabled = true;
+                World
+                    .DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CostTweakingSystem>()
+                    .Enabled = true;
             }
             else
             {
                 settings.NotGameMode = true;
                 Enabled = false;
+                World
+                    .DefaultGameObjectInjectionWorld.GetOrCreateSystemManaged<CostTweakingSystem>()
+                    .Enabled = false;
             }
         }
 

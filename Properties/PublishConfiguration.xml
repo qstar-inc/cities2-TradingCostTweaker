@@ -19,26 +19,18 @@ You've came to the right place. Introducing Trading Cost Tweaker that allows you
 However, you can make it so you don't pay anything for their service.
 Each service can be individually configured from the Options UI.
 	</LongDescription>
-	<!--Thumbnail-->
 	<Thumbnail Value="Properties/Thumbnail.png" />
-	<!--Screenshot, can be set multiple times-->
 	<Screenshot Value="Properties/Screenshot01.png" />
-	<!--Tag, can be set multiple times-->
 	<Tag Value="Code Mod" />
-	<!--Link to the forum post where the mod can be discussed-->
 	<ForumLink Value="" />
-	<!--Version of the mod-->
-	<ModVersion Value="1.1" />
-	<!--Recommended version of the base game to use the mod-->
-	<GameVersion Value="1.1.*" />
-	<!--Dependency for the mod, can be set multiple times-->
+	<ModVersion Value="2.0.1" />
+	<GameVersion Value="1.3.3f1" />
 	<Dependency Id="" />
-	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
-	<ChangeLog Value="1.1" />
 	<ChangeLog>
-## New Features
-* Option to modify the cargo costs for all four cargo transportation method.
+- Compatibility update for 1.3.3f1.
+- Vanilla Data is now dynamically collected to prevent accidental overwrite in case of game update.
 	</ChangeLog>
-	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon, buymeacoffee, kofi, crowdin, gitlab-->
+	<ExternalLink Type="discord" Url="https://discord.com/channels/1024242828114673724/1270630977483444265" />
 	<ExternalLink Type="github" Url="https://github.com/qstar-inc/cities2-TradingCostTweaker" />
+	<ExternalLink Type="buymeacoffee" Url="https://buymeacoffee.com/starq" />
 </Publish>
